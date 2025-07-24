@@ -16,9 +16,6 @@ switch($type){
 	case 'csv':
 		report::create_csv_report($data,$filename);
 		break;
-	case 'xls':
-		report::create_xls_report($data,$filename);
-		break;
 	case 'xlsx':
 		report::create_xlsx_report($data,$filename);
 		break;
