@@ -1,3 +1,5 @@
 /venv/*
 /log/*
 /conf/settings.inc.php
+/vendor/*
+

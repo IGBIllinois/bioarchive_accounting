@@ -1,0 +1,18 @@
+{
+	"name": "igbillinois/bioarchive_accounting",
+	"description": "A billing interface for IGB Bioarchive Accounting",
+	"license": "GPL-3.0-only",
+	"repositories" : [
+        {
+                "type": "vcs",
+                "url": "https://www.github.com/IGBIllinois/IGBIllinois-php"
+        }
+        ],
+	"require": {
+		"php":	">=7.2",
+		"ext-pdo": "*",
+		"ext-mysqlnd": "*",
+		"ext-ldap": "*",
+		"ext-xml": "*"
+	}
+}

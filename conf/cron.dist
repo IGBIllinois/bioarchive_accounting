@@ -1,0 +1,2 @@
+20 3 * * 6 root /usr/local/sbin/bioarchive_accounting.sh
+30 3 28-31 * * [ $(date -d +1day +%d) -eq 1 ] && /usr/local/sbin/bioarchive_accounting.sh
