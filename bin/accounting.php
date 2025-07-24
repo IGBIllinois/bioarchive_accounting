@@ -38,7 +38,7 @@ else {
 	        echo sprintf("Bucket '%s'...", $row['directory']);
             // Gather usage info
             // Total Usage in MB
-            $usage = exec("get_bucket_size.py --bucket=".$row['directory']);
+            $usage = exec("./get_bucket_size.py --bucket=".$row['directory']);
             preg_match("/^[^\t]*\\t(.*)/u", $usage, $matches);
             $usage = $matches[1]/1024;
             echo $usage . ' MB... ';

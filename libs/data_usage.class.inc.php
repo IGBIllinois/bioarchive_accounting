@@ -59,7 +59,7 @@
 				$prevmonth = new DateTime("$prevmonth/01/$prevyear");
 				$prevmonth->add(new DateInterval("P1M"));
 				$prevmonth->sub(new DateInterval("PT1S"));
-				$tokenbalance = token_transaction::tokenBalance($this->db,$directory_id,$prevmonth->format("Y-m-d H:i:s"));
+				$tokenbalance = token_transaction::tokenBalance($this->db,$directory_id/*,$prevmonth->format("Y-m-d H:i:s")*/);
 				if($tokenbalance > 0){
 					// Use as many tokens as we need
 					$tokensUsed = $bracketChange;
