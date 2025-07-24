@@ -1,0 +1,22 @@
+me: Build Status
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Test PHP Syntax
+      run: if find . -name "*.php" ! -path "./vendor/*" ! -path "./html/vendor/*" -exec php -l {} 2>&1 \; | grep "syntax error, unexpected"; then exit 1; fi
+
+
+
+
