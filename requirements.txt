@@ -1,0 +1,1 @@
+ds3_python3_sdk @ git+https://github.com/SpectraLogic/ds3_python3_sdk@releases/tag/v5.4.2
