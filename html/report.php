@@ -14,10 +14,10 @@ else {
 }
 switch($type){
 	case 'csv':
-		report::create_csv_report($data,$filename);
+		\IGBIllinois\report::create_csv_report($data,$filename);
 		break;
 	case 'xlsx':
-		report::create_xlsx_report($data,$filename);
+		\IGBIllinois\report::create_excel_2007_report($data,$filename);
 		break;
 }
 ?>

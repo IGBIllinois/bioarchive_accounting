@@ -2,8 +2,8 @@
 
 ini_set('display_errors',1);
 
-
-set_include_path(get_include_path().":../libs:includes/PHPExcel-1.8.2/Classes");
+$include_paths = array(__DIR__ . '/../../libs');
+set_include_path(get_include_path() . ":" . implode(':',$include_paths));
 
 require_once __DIR__ . '/../../conf/app.inc.php';
 require_once __DIR__ . '/../../conf/settings.inc.php';
