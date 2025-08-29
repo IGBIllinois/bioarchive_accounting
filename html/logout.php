@@ -11,7 +11,7 @@
 //////////////////////////////////////////
 
 include 'includes/main.inc.php';
-$session = new session(SESSION_NAME);
+$session = new \IGBIllinois\session(SESSION_NAME);
 $session->destroy_session();
 header("Location: login.php")
 

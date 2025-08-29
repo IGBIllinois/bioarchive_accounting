@@ -11,8 +11,7 @@
 //						
 //////////////////////////////////////////////////
 
-$session = new session(SESSION_NAME);
-
+$session = new \IGBIllinois\session(SESSION_NAME);
 //If not logged in
 if (!($session->get_var('login'))) {
 	$webpage = $_SERVER['PHP_SELF'];

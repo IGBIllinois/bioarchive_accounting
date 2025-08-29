@@ -9,9 +9,9 @@
 //
 ///////////////////////////////////
 
-include_once 'includes/main.inc.php';
+require_once 'includes/main.inc.php';
 
-$session = new session(SESSION_NAME);
+$session = new \IGBIllinois\session(SESSION_NAME);
 $message = "";
 $webpage = $dir = dirname($_SERVER['PHP_SELF']) . "/index.php";
 if ($session->get_var('webpage') != "") {
@@ -66,7 +66,7 @@ if (isset($_POST['login'])) {
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title><?php echo TITLE; ?></title>
-		<link rel="stylesheet" href="includes/bootstrap/css/bootstrap.min.css" type="text/css">
+		<link rel="stylesheet" type="text/css" href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
 		<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 	</head>
 	<body OnLoad="document.login.username.focus();">
