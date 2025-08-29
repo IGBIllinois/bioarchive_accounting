@@ -9,13 +9,15 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title><?php echo TITLE; ?></title>
-		<link rel="stylesheet" href="includes/bootstrap/css/bootstrap.min.css" type="text/css"/>
-		<link rel="stylesheet" href="includes/main.inc.css" type="text/css"/>
 		<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"/>
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src='vendor/components/jquery/jquery.min.js' type='text/javascript'></script>
+		<script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
 		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 		<script type="text/javascript" src="includes/main.inc.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
+                <link rel="stylesheet" href="includes/main.inc.css" type="text/css"/>
 	</head>
 	<body>
 		<nav class="navbar navbar-inverse navbar-static-top">

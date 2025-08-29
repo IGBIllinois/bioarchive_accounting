@@ -26,7 +26,7 @@
 			if($login_user->is_admin() && count($directories)>1){
 				$directory_html .= "<tr><td></td><td><div class='btn-group btn-group-sm'>";
 				$directory_html .= "<a href='edit_directory.php?directory_id=".$directory->get_id()."' class='btn btn-primary'><span class='glyphicon glyphicon-pencil'></span> Edit Directory</a>";
-				$directory_html .= '<a href="add_tokens.php?directory_id='.$directory->get_id().'" class="btn btn-success"><span class="glyphicon glyphicon-usd"></span> Pre-pay</a>';
+				$directory_html .= '<a href="add_tokens.php?directory_id='.$directory->get_id().'" class="btn btn-success"><span class="glyphicon glyphicon-usd"></span> Pre-Pay</a>';
 				$directory_html .= "</div></td></tr>";
 			}
 		}
@@ -84,7 +84,7 @@
 		<a href="edit_user.php?user_id=<?php echo $user_id; ?>" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Edit User</a>
 		<?php if(count($user->get_directories())==1){?>
 		<a href="edit_directory.php?directory_id=<?php echo $directories[0]->get_id();?>" class="btn btn-primary btn"><span class="glyphicon glyphicon-pencil"></span> Edit Directory</a>
-		<a href="add_tokens.php?directory_id=<?php echo $directories[0]->get_id(); ?>" class="btn btn-success"><span class="glyphicon glyphicon-usd"></span> Pre-pay</a>
+		<a href="add_tokens.php?directory_id=<?php echo $directories[0]->get_id(); ?>" class="btn btn-success"><span class="glyphicon glyphicon-usd"></span> Pre-Pay</a>
 		<?php } ?>
 		<a href="user_bill.php?user_id=<?php echo $user_id; ?>" class="btn btn-info">User Bill</a>
 	</div>

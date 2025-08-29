@@ -14,9 +14,18 @@
 		"ext-mysqlnd": "*",
 		"ext-ldap": "*",
 		"ext-xml": "*",
+		"components/jquery": "3.6.0",
+		"twbs/bootstrap": "3.4.1",
 		"igbillinois/igbillinois-php": "1.4.6"
 	},
-
+	"scripts": {
+                "post-update-cmd": [
+			"mkdir -p html/vendor/components",
+			"mkdir -p html/vendor/twbs",
+			"cp -R vendor/components/jquery html/vendor/components/",
+			"cp -R vendor/twbs/bootstrap html/vendor/twbs/"
+		]
+	},
 	"require-dev": {
 		"phpmd/phpmd": "^2.13"
 	}
