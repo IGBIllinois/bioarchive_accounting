@@ -83,7 +83,7 @@ if (isset($_POST['login'])) {
 		<div class="container-fluid">
 
 			<div class='row'>
-				<div class='col-md-3 col-md-offset-4'>
+				<div class='col-md-4 col-md-offset-4'>
 					<form action='login.php' method='post' name='login'>
 						<div class="form-group">
 							<label for="username">Username: </label>
@@ -102,12 +102,24 @@ if (isset($_POST['login'])) {
 						<button type='submit' name='login' class='btn btn-primary'>Login</button>
 					</form>
 	
-	
+					<br>	
 					<?php if (isset($message)) { 
 						echo $message;
-	} ?>
-	<br>
-	<em>&copy; 2015-<?php echo date('Y'); ?>  University of Illinois Board of Trustees</em>
+						} ?>
 				</div>
 			</div>
+			<footer class='page-footer mt-auto'>
+			<hr>
+			<div class='container-fluid'>
+				<p class='text-center'>
+				<span class='text-muted'>	
+				<br><em>Computer & Network Resource Group - Carl R. Woese Institute for Genomic Biology</em>
+				<br><em>If you have any questions, please email us at <a href='mailto:<?php echo ADMIN_EMAIL; ?>'><?php echo ADMIN_EMAIL; ?></a></em>
+				<br><em><a target='_blank' href='https://www.igb.illinois.edu'>Carl R. Woese Institute for Genomic Biology Home Page</a></em>
+				<br><em><a target='_blank' href='https://www.vpaa.uillinois.edu/resources/web_privacy'>University of Illinois System Web Privacy Notice</a> </em>
+				<em>&copy; 2015-<?php echo date('Y'); ?>  University of Illinois Board of Trustees</em>
+				</span>
+			</div>
+			</footer>
 		</div>
+	

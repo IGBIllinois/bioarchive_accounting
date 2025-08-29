@@ -11,7 +11,7 @@
 //////////////////////////////////////////
 
 include 'includes/main.inc.php';
-$session = new session(__SESSION_NAME__);
+$session = new session(SESSION_NAME);
 $session->destroy_session();
 header("Location: login.php")
 

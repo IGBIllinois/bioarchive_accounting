@@ -35,6 +35,10 @@
 		</div>
 	</div>
 	<div class='col-sm-12' style='text-align: center; padding: 15px 0'>
+	<br><em>Computer & Network Resource Group - Carl R. Woese Institute for Genomic Biology</em>
+	<br><em>If you have any questions, please email us at <a href='mailto:<?php echo ADMIN_EMAIL; ?>'><?php echo ADMIN_EMAIL; ?></a></em>
+	<br><em><a target='_blank' href='https://www.igb.illinois.edu'>Carl R. Woese Institute for Genomic Biology Home Page</a></em>
+	<br><em><a target='_blank' href='https://www.vpaa.uillinois.edu/resources/web_privacy'>University of Illinois System Web Privacy Notice</a> </em>
 	<em>&copy; 2015-<?php echo date('Y'); ?> University of Illinois Board of Trustees</em>
 	</div>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
