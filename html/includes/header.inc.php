@@ -8,7 +8,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title><?php echo __TITLE__; ?></title>
+		<title><?php echo TITLE; ?></title>
 		<link rel="stylesheet" href="includes/bootstrap/css/bootstrap.min.css" type="text/css"/>
 		<link rel="stylesheet" href="includes/main.inc.css" type="text/css"/>
 		<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"/>
@@ -28,7 +28,7 @@
 						<span class="icon-bar"></span>
 				    </button>
 					<div class="navbar-brand">
-						<?php echo __TITLE__; ?>
+						<?php echo TITLE; ?>
 					</div>
 				</div>
 				<div class="collapse navbar-collapse" id="archive-accounting-nav-collapse">

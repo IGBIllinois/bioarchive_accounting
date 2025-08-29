@@ -13,6 +13,11 @@
 		"ext-pdo": "*",
 		"ext-mysqlnd": "*",
 		"ext-ldap": "*",
-		"ext-xml": "*"
+		"ext-xml": "*",
+		"igbillinois/igbillinois-php": "1.4.6"
+	},
+
+	"require-dev": {
+		"phpmd/phpmd": "^2.13"
 	}
 }

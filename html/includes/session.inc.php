@@ -11,7 +11,7 @@
 //						
 //////////////////////////////////////////////////
 
-$session = new session(__SESSION_NAME__);
+$session = new session(SESSION_NAME);
 
 //If not logged in
 if (!($session->get_var('login'))) {
@@ -25,7 +25,7 @@ if (!($session->get_var('login'))) {
 	die();
 }
 //If session timeout is reach
-elseif (time() > $session->get_var('timeout') + __SESSION_TIMEOUT__) {
+elseif (time() > $session->get_var('timeout') + SESSION_TIMEOUT) {
 	header('Location: logout.php');
 	die();
 }

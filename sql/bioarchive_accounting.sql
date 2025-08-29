@@ -62,12 +62,6 @@ CREATE TABLE `settings_values` (
   PRIMARY KEY (`key`,`modified`)
 );
 
-INSERT INTO `settings_values` (`key`, `value`, `modified`, `current`)
-VALUES
-	('data_cost','150','2015-01-01 00:00:00',1),
-	('min_billable_data','51200','2015-01-01 00:00:00',1),
-	('small_file_size','1048576','2015-01-01 00:00:00',1);
-
 CREATE TABLE `transactions` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `directory_id` int(11) unsigned NOT NULL,
@@ -88,3 +82,23 @@ CREATE TABLE `users` (
   `time_created` datetime NOT NULL,
   PRIMARY KEY (`id`)
 );
+
+CREATE VIEW `billing_report` AS
+SELECT `u`.`id` AS `id`,
+`u`.`directory_id` AS `directory_id`,
+`d`.`directory` AS `directory`,
+`u`.`directory_size` AS `directory_size`,
+ceiling(`u`.`directory_size` / 1048576) AS `bracket`,
+`u`.`usage_time` AS `usage_time`,
+`u`.`cost` AS `cost`,
+`u`.`billed_cost` AS `billed_cost`,
+`t`.`transaction_amount` * -1 AS `tokens_used`
+FROM ((`archive_usage` `u` join `directories` `d` on(`d`.`id` = `u`.`directory_id`))
+LEFT JOIN `token_transactions` `t` on(`u`.`token_transaction_id` = `t`.`id`))
+
+INSERT INTO `settings_values` (`key`, `value`, `modified`, `current`)
+VALUES
+        ('data_cost','150','2015-01-01 00:00:00',1),
+        ('min_billable_data','51200','2015-01-01 00:00:00',1),
+        ('small_file_size','1048576','2015-01-01 00:00:00',1);
+
