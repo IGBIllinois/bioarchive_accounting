@@ -54,7 +54,7 @@
 			<label class="col-sm-2 control-label" for="archive-dir-input">Archive Directory:</label>
 			<div class="col-sm-4">
 				<div class="input-group">
-					<span class="input-group-addon"><?php echo __ARCHIVE_DIR__;?></span>
+					<span class="input-group-addon"><?php echo ARCHIVE_DIR;?></span>
 					<input class="form-control" type="text" name="archive_dir" id="archive-dir-input" value="<?php if (isset($_POST['archive_dir'])){echo $_POST['archive_dir'];}?>"/>
 				</div>
 			</div>

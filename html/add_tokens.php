@@ -27,9 +27,9 @@
 		$user_list_html = "<select class='form-control' name='directory_id'>";
 		foreach ($user_list as $user) {
 			if ($user['dir_id'] == $directory_id) {
-				$user_list_html .= "<option value='" . $user['dir_id'] . "' selected='true'>" . $user['username'] ." - ".__ARCHIVE_DIR__.$user['directory'] . "</option>";
+				$user_list_html .= "<option value='" . $user['dir_id'] . "' selected='true'>" . $user['username'] ." - ".ARCHIVE_DIR.$user['directory'] . "</option>";
 			} else {
-				$user_list_html .= "<option value='" . $user['dir_id'] . "'>" . $user['username'] ." - ".__ARCHIVE_DIR__.$user['directory'] . "</option>";
+				$user_list_html .= "<option value='" . $user['dir_id'] . "'>" . $user['username'] ." - ".ARCHIVE_DIR.$user['directory'] . "</option>";
 			}
 		}
 		$user_list_html .= "</select>";

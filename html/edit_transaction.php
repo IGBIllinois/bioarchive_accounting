@@ -37,7 +37,7 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label" for="userid">Directory:</label>
 				<div class="col-sm-4">
-					<?php echo $user->get_username()." - ".__ARCHIVE_DIR__.$directory->get_directory();?>
+					<?php echo $user->get_username()." - ".ARCHIVE_DIR.$directory->get_directory();?>
 					<input type="hidden" name="id" value="<?php echo $transaction->get_id();?>"/>
 				</div>
 			</div>

@@ -39,9 +39,9 @@
 		$user_list_html = "<div class='form-group'><label>Directory: </label> <select class='form-control input-sm' name='directory_id'>";
 		foreach ($user_list as $user) {
 			if ($user['dir_id'] == $directory_id) {
-				$user_list_html .= "<option value='" . $user['dir_id'] . "' selected='true'>" . $user['username'] ." - ".__ARCHIVE_DIR__.$user['directory'] . "</option>";
+				$user_list_html .= "<option value='" . $user['dir_id'] . "' selected='true'>" . $user['username'] ." - ".ARCHIVE_DIR.$user['directory'] . "</option>";
 			} else {
-				$user_list_html .= "<option value='" . $user['dir_id'] . "'>" . $user['username'] ." - ".__ARCHIVE_DIR__.$user['directory'] . "</option>";
+				$user_list_html .= "<option value='" . $user['dir_id'] . "'>" . $user['username'] ." - ".ARCHIVE_DIR.$user['directory'] . "</option>";
 			}
 		}
 		$user_list_html .= "</select></div>";
@@ -101,7 +101,7 @@
 		</tr>
 		<tr>
 			<td>Directory:</td>
-			<td><?php echo __ARCHIVE_DIR__.$directory->get_directory(); ?></td>
+			<td><?php echo ARCHIVE_DIR.$directory->get_directory(); ?></td>
 		</tr>
 		<tr>
 			<td>Usage:</td>
@@ -196,7 +196,7 @@
 	<script type="text/javascript">
 		google.load('visualization', '1.1', {'packages':['corechart']});
 		window.onload = function(){
-			var basedir = '<?php echo __ARCHIVE_DIR__.$directory->get_directory();?>';
+			var basedir = '<?php echo ARCHIVE_DIR.$directory->get_directory();?>';
 			var root = {"filename":"<?php echo $directory->get_directory();?>","filesize":0,children:[]};
 			var smallfilesize = <?php echo $settings->get_setting('small_file_size'); ?>;
 			var digest = {'size':{},'count':{}};

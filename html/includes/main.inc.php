@@ -1,8 +1,14 @@
 <?php
 
 ini_set('display_errors',1);
+
+
 set_include_path(get_include_path().":../libs:includes/PHPExcel-1.8.2/Classes");
-include_once('../conf/settings.inc.php');
+
+require_once __DIR__ . '/../../conf/app.inc.php';
+require_once __DIR__ . '/../../conf/settings.inc.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+
 function my_autoloader($class_name) {
 	if(file_exists("../libs/" . $class_name . ".class.inc.php")) {
 		require_once $class_name . '.class.inc.php';
@@ -12,6 +18,7 @@ function my_autoloader($class_name) {
 spl_autoload_register('my_autoloader');
 
 $db = new db(MYSQL_HOST,MYSQL_DATABASE,MYSQL_USER,MYSQL_PASSWORD);
-$ldap = new ldap(LDAP_HOST,LDAP_SSL,LDAP_PORT,LDAP_BASE_DN);
+$ldap = new \IGBIllinois\ldap(LDAP_HOST,LDAP_BASE_DN,LDAP_PORT,LDAP_SSL,LDAP_TLS);
+
 $settings = new settings($db);
 ?>

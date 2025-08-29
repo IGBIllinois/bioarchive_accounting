@@ -45,7 +45,7 @@ class data_functions {
         $result = $db->query($sql);
         for ($i=0;$i<count($result);$i++) {
         	if(!__USE_BUCKETS__){
-				$result[$i]['directory'] = __ARCHIVE_DIR__ . $result[$i]['directory'];
+				$result[$i]['directory'] = ARCHIVE_DIR . $result[$i]['directory'];
 			}
 		    if (is_dir($result[$i]['directory'])) {
 		        $result[$i]['dir_exists'] = true;

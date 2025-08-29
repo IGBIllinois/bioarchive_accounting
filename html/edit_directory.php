@@ -62,7 +62,7 @@
 			<div class="col-sm-4">
 				<div class="input-group">
 					<?php if (!__USE_BUCKETS__){ ?>
-                    <span class="input-group-addon"><?php echo __ARCHIVE_DIR__;?></span>
+                    <span class="input-group-addon"><?php echo ARCHIVE_DIR;?></span>
                     <?php } ?>
 					<input class="form-control" type="text" name="archive_dir" id="archive-dir-input" value="<?php echo $directory->get_directory();?>"/>
 				</div>

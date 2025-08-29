@@ -33,7 +33,7 @@ if (isset($_POST['login'])) {
 		$message .= html::error_message("Please enter your password.");
 	}
 	if ($error == false) {
-		$ldap = new ldap(LDAP_HOST,LDAP_SSL,LDAP_PORT,LDAP_BASE_DN);
+		$ldap = new \IGBIllinois\ldap(LDAP_HOST,LDAP_BASE_DN,LDAP_PORT,LDAP_SSL,LDAP_TLS);
 		$login_user = new user($db,$ldap,0,$username);
 		$success = $login_user->authenticate($password);
 		if ($success) {

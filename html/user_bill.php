@@ -74,7 +74,7 @@
 	foreach($data_usage as $value){
 		if($value['terabytes']!=null){
 			$data_html .= "<tr>";
-			$data_html .= "<td>".__ARCHIVE_DIR__.$value['directory']."</td>";
+			$data_html .= "<td>".ARCHIVE_DIR.$value['directory']."</td>";
 			$data_html .= "<td>".$value['terabytes']." TB</td>";
 			$data_html .= "<td>".$value['prevusage']." TB</td>";
 			if($value['do_not_bill']==0){

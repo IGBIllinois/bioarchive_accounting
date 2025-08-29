@@ -42,10 +42,10 @@
         foreach ($dir_list as $dir) {
 	        if($dir['do_not_bill']==0){
 		        if ($dir['dir_id'] == $directory_id) {
-		            $dir_list_html .= "<option value='" . $dir['dir_id'] . "' selected='true'>" . $dir['username'] ." - ".__ARCHIVE_DIR__.$dir['directory'] . "</option>";
+		            $dir_list_html .= "<option value='" . $dir['dir_id'] . "' selected='true'>" . $dir['username'] ." - ".ARCHIVE_DIR.$dir['directory'] . "</option>";
 		        }
 		        else {
-		            $dir_list_html .= "<option value='" . $dir['dir_id'] . "'>" . $dir['username'] ." - ".__ARCHIVE_DIR__.$dir['directory'] . "</option>";
+		            $dir_list_html .= "<option value='" . $dir['dir_id'] . "'>" . $dir['username'] ." - ".ARCHIVE_DIR.$dir['directory'] . "</option>";
 		        }
 			}
         }

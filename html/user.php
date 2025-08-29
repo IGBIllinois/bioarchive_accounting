@@ -17,7 +17,7 @@
 		$directories = $user->get_directories();
 		foreach($directories as $directory){
 			$usage = data_usage::latestUsage($db,$directory->get_id());
-			$directory_html .= "<tr class='topborder'><td>Directory:</td><td>".__ARCHIVE_DIR__.$directory->get_directory();
+			$directory_html .= "<tr class='topborder'><td>Directory:</td><td>".ARCHIVE_DIR.$directory->get_directory();
 			$directory_html .= "</td></tr>";
 			if($directory->get_do_not_bill()==0) $directory_html .= "<tr><td>CFOP:</td><td>".$directory->get_cfop()."</td></tr>";
 			if($directory->get_do_not_bill()==0) $directory_html .= "<tr><td>Activity Code:</td><td>".$directory->get_activity_code()."</td></tr>";

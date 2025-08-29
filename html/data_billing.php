@@ -23,7 +23,7 @@
 // 		if ($value['Billed Cost'] > 0) {
 			$data_html .= "<tr>";
 			$data_html .= "<td>".$value['Username']."</td>";
-			$data_html .= "<td>".__ARCHIVE_DIR__.$value['Directory']."</td>";
+			$data_html .= "<td>".ARCHIVE_DIR.$value['Directory']."</td>";
 			$data_html .= "<td>".number_format($value['Usage'],4)." TB</td>";
 			$data_html .= "<td>".number_format($value['Previous_Usage'],4)." TB</td>";
 			$data_html .= "<td>$".number_format($value['Cost'],2)."</td>";

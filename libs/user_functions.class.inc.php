@@ -9,7 +9,7 @@ class user_functions {
         $where_sql = array();
 
     	$sql = "select u.*, (select group_concat(concat(:basedir,d1.directory) separator ', ') from users u1 left join directories d1 on u1.id=d1.user_id where d1.is_enabled=1 and u1.id=u.id) as `directory` from users u ";
-    	$args = array(':basedir'=>__ARCHIVE_DIR__);
+    	$args = array(':basedir'=>ARCHIVE_DIR);
         array_push($where_sql,"u.is_enabled=1 ");
 
     	if ($search != "" ) {
