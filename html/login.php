@@ -11,7 +11,7 @@
 
 include_once 'includes/main.inc.php';
 
-$session = new session(__SESSION_NAME__);
+$session = new session(SESSION_NAME);
 $message = "";
 $webpage = $dir = dirname($_SERVER['PHP_SELF']) . "/index.php";
 if ($session->get_var('webpage') != "") {
@@ -33,7 +33,7 @@ if (isset($_POST['login'])) {
 		$message .= html::error_message("Please enter your password.");
 	}
 	if ($error == false) {
-		$ldap = new ldap(__LDAP_HOST__,__LDAP_SSL__,__LDAP_PORT__,__LDAP_BASE_DN__);
+		$ldap = new ldap(LDAP_HOST,LDAP_SSL,LDAP_PORT,LDAP_BASE_DN);
 		$login_user = new user($db,$ldap,0,$username);
 		$success = $login_user->authenticate($password);
 		if ($success) {
@@ -65,7 +65,7 @@ if (isset($_POST['login'])) {
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title><?php echo __TITLE__; ?></title>
+		<title><?php echo TITLE; ?></title>
 		<link rel="stylesheet" href="includes/bootstrap/css/bootstrap.min.css" type="text/css">
 		<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 	</head>
@@ -74,7 +74,7 @@ if (isset($_POST['login'])) {
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<div class="navbar-brand">
-						<?php echo __TITLE__; ?>
+						<?php echo TITLE; ?>
 					</div>
 				</div>
 			</div>
@@ -107,7 +107,7 @@ if (isset($_POST['login'])) {
 						echo $message;
 	} ?>
 	<br>
-					<em>&copy 2015 University of Illinois Board of Trustees</em>
+	<em>&copy; 2015-<?php echo date('Y'); ?>  University of Illinois Board of Trustees</em>
 				</div>
 			</div>
 		</div>
