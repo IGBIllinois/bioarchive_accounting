@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 ini_set("display_errors",1);
 chdir(dirname(__FILE__));
@@ -8,7 +9,9 @@ function __autoload($class_name) {
 	}
 }
 
-include_once '../conf/settings.inc.php';
+require_once '../conf/settings.inc.php';
+
+$log = new \IGBIllinois\log(ENABLE_LOG,LOG_FILE);
 
 $sapi_type = php_sapi_name();
 // If run from command line
@@ -17,8 +20,8 @@ if ($sapi_type != 'cli') {
 }
 else {
 	// Connect to database
-	$db = new db(__MYSQL_HOST__,__MYSQL_DATABASE__,__MYSQL_USER__,__MYSQL_PASSWORD__);
-	$ldap = new ldap(__LDAP_HOST__,__LDAP_SSL__,__LDAP_PORT__,__LDAP_BASE_DN__);
+	$db = new \IGBIllinois\db(MYSQL_HOST,MYSQL_DATABASE,MYSQL_USER,MYSQL_PASSWORD);
+	$ldap = new \IGBIllinois\ldap(LDAP_HOST,LDAP_BASE_DN,LDAP_PORT,LDAP_SSL,LDAP_TLS);
 	$settings = new settings($db);
 
 	// Get archive directories from database
@@ -34,7 +37,7 @@ else {
 	}
 	$email_users = array();
 	foreach ( $rows as $key=>$row ){
-	    if(__USE_BUCKETS__){
+	    if(USE_BUCKETS){
 	        echo sprintf("Bucket '%s'...", $row['directory']);
             // Gather usage info
             // Total Usage in MB
@@ -59,13 +62,13 @@ else {
             }
 
             echo "Done.\n";
-            log::log_message("Scanned bucket " . $row['directory'] . ': ' . $usage . ' MB.');
+            $log->send_log("Scanned bucket " . $row['directory'] . ': ' . $usage . ' MB.');
         } else {
-            if (file_exists(__ARCHIVE_DIR__ . $row['directory'])) {
-                echo __ARCHIVE_DIR__ . $row['directory'] . "... ";
+            if (file_exists(ARCHIVE_DIR . $row['directory'])) {
+                echo ARCHIVE_DIR . $row['directory'] . "... ";
                 // Gather usage info
                 // Total Usage in MB
-                $usage = exec("du -sm " . __ARCHIVE_DIR__ . $row['directory']);
+                $usage = exec("du -sm " . ARCHIVE_DIR . $row['directory']);
                 preg_match("/^(.*)\\t/u", $usage, $matches);
                 $usage = $matches[1];
                 echo $usage . ' MB... ';
@@ -73,7 +76,7 @@ else {
                 // # of small files
                 unset($allfiles);
                 exec(
-                    "find " . __ARCHIVE_DIR__ . $row['directory'] . " -type f -size -" . $settings->get_setting(
+                    "find " . ARCHIVE_DIR . $row['directory'] . " -type f -size -" . $settings->get_setting(
                         'small_file_size'
                     ) . "k | wc -l",
                     $allfiles
@@ -94,18 +97,10 @@ else {
                 }
 
                 echo "Done.\n";
-                log::log_message("Scanned " . __ARCHIVE_DIR__ . $row['directory'] . ': ' . $usage . ' MB.');
+                $log->send_log("Scanned " . ARCHIVE_DIR . $row['directory'] . ': ' . $usage . ' MB.');
             } else {
-                log::log_message("Directory " . __ARCHIVE_DIR__ . $row['directory'] . ' does not exist.');
+                $log->send_log("Directory " . ARCHIVE_DIR . $row['directory'] . ' does not exist.');
             }
         }
 	}
-	// Email users with bills from last month
-/*
-	$user = new user($db,$ldap);
-	foreach ($email_users as $userid){
-		$user->load_by_id($userid);
-		$user->email_bill(__ADMIN_EMAIL__);
-	}
-*/
 }

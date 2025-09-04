@@ -67,7 +67,7 @@ class settings {
 	}
 	
 	public static function get_root_data_dirs(){
-		$data_dirs = explode(" ",__ROOT_DATA_DIRS__);
+		$data_dirs = explode(" ",ROOT_DATA_DIRS);
 		return $data_dirs;
 	}
 }

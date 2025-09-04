@@ -16,7 +16,7 @@
 			$trans = new token_transaction($db);
 			$trans->create($_POST['directory_id'],$_POST['amount'],null,null,intval($settings->get_setting('data_cost')));
 			
-			log::log_message($_POST['amount']."TB prepaid for directory ".$_POST['directory_id']);
+			$log->log_message($_POST['amount']."TB prepaid for directory ".$_POST['directory_id']);
 			$message = html::success_message("Transaction logged.");
 		}
 	}
@@ -53,22 +53,6 @@
 					</div>
 				</div>
 			</div>
-<!--
-			<div class="form-group">
-				<label class="col-sm-2 control-label" for="date-input">Date:</label>
-				<div class="col-sm-4">
-					<select class="form-control" name="dateselect" id="dateselect">
-						<option value="0" <?php if(isset($_POST['dateselect'])&&$_POST['dateselect']==0)echo 'selected';?>>Today</option>
-						<option value="1" <?php if(isset($_POST['dateselect'])&&$_POST['dateselect']==1)echo 'selected';?>>On date:</option>
-					</select>
-				</div>
-			</div>
-			<div class="form-group" id="dateinput" <?php if( !(isset($_POST['dateselect'])&&$_POST['dateselect']==1) )echo 'style="display:none"';?>>
-				<div class="col-sm-4 col-sm-offset-2">
-					<input class="form-control" name="date" placeholder="YYYY-MM-DD" value="<?php if(isset($_POST['date']))echo $_POST['date'];?>"/>
-				</div>
-			</div>
--->
 			<div class="row">
 				<div class="col-sm-4 col-sm-offset-2">
 					<p>

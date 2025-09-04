@@ -44,7 +44,7 @@ class data_functions {
 		$sql = "select directory from directories left join users on users.id=directories.user_id where directories.is_enabled=1 and users.is_enabled=1 order by directory asc";
         $result = $db->query($sql);
         for ($i=0;$i<count($result);$i++) {
-        	if(!__USE_BUCKETS__){
+        	if(!USE_BUCKETS){
 				$result[$i]['directory'] = ARCHIVE_DIR . $result[$i]['directory'];
 			}
 		    if (is_dir($result[$i]['directory'])) {
