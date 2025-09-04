@@ -97,7 +97,8 @@
 			} else {
 				// Create new usage
 				// Save info to database
-				$sql = "insert into `archive_usage` (`directory_id`,`directory_size`,`num_small_files`,`usage_time`,`cost`,`billed_cost`,`pending`) values (:dirid,:usage,:smallfiles,NOW(),:cost,:billedcost,1)";
+				$sql = "INSERT INTO `archive_usage` (`directory_id`,`directory_size`,`num_small_files`,`cost`,`billed_cost`,`pending`) ";
+				$sql .= "VALUES(:dirid,:usage,:smallfiles,:cost,:billedcost,1)";
 				$args = array(':dirid'=>$directory_id,':usage'=>$usage,':smallfiles'=>$num_small_files,':cost'=>$cost,':billedcost'=>$billed_cost);
 				$this->id = $this->db->insert_query($sql,$args);
 				$this->load_by_id($this->id);

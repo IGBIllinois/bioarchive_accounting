@@ -14,7 +14,7 @@ CREATE TABLE `archive_usage` (
   `directory_id` int(11) unsigned NOT NULL,
   `directory_size` int(11) NOT NULL DEFAULT '0' COMMENT 'directory size in MB',
   `num_small_files` int(11) NOT NULL DEFAULT '0',
-  `usage_time` datetime NOT NULL,
+  `usage_time` datetime DEFAULT CURRENT_TIMESTAMP,
   `cost` varchar(16) NOT NULL DEFAULT '0' COMMENT 'what the cost should be',
   `billed_cost` int(11) DEFAULT NULL COMMENT 'actual billed amount',
   `tokens_used` int(11) DEFAULT NULL COMMENT 'number of tokens used',
@@ -28,24 +28,27 @@ CREATE TABLE `cfops` (
   `cfop` varchar(64) NOT NULL DEFAULT '',
   `activity_code` varchar(16) DEFAULT NULL,
   `active` int(11) NOT NULL,
-  `time_created` datetime NOT NULL,
+  `time_created` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 );
 
 CREATE TABLE `directories` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `directory` varchar(256) NOT NULL DEFAULT '',
-  `time_created` datetime NOT NULL,
-  `is_enabled` int(11) NOT NULL DEFAULT '1',
-  `do_not_bill` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
+	`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+	`user_id` int(11) NOT NULL,
+	`directory` varchar(256) NOT NULL DEFAULT '',
+	`time_created` datetime DEFAULT CURRENT_TIMESTAMP,
+	`is_enabled` int(11) NOT NULL DEFAULT '1',
+	`do_not_bill` int(11) NOT NULL DEFAULT '0',
+	CONSTRAINT directory UNIQUE(directory),
+	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `settings` (
-  `key` varchar(64) NOT NULL DEFAULT '',
-  `name` varchar(64) NOT NULL DEFAULT '',
-  PRIMARY KEY (`key`)
+CREATE TABLE settings (
+	key VARCHAR(64) NOT NULL DEFAULT '',
+	value VARCHAR(64) NOT NULL DEFAULT '',
+ 	modified DATETIME DEFAULT CURRENT_TIMESTAMP,
+	name VARCHAR(64) NOT NULL DEFAULT '',
+	PRIMARY KEY (key)
 );
 
 INSERT INTO `settings` (`key`, `name`)
@@ -57,7 +60,7 @@ VALUES
 CREATE TABLE `settings_values` (
   `key` varchar(64) NOT NULL DEFAULT '',
   `value` varchar(64) NOT NULL DEFAULT '',
-  `modified` datetime NOT NULL,
+  `modified` datetime DEFAULT CURRENT_TIMESTAMP,
   `current` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`key`,`modified`)
 );
@@ -67,20 +70,21 @@ CREATE TABLE `transactions` (
   `directory_id` int(11) unsigned NOT NULL,
   `amount` int(11) NOT NULL,
   `usage_id` int(11) unsigned DEFAULT NULL,
-  `transaction_time` datetime NOT NULL,
+  `transaction_time` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `usage_id` (`usage_id`),
   CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`usage_id`) REFERENCES `archive_usage` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE `users` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(64) NOT NULL DEFAULT '',
-  `username` varchar(64) NOT NULL DEFAULT '',
-  `is_admin` int(11) NOT NULL DEFAULT '0',
-  `is_enabled` int(11) NOT NULL DEFAULT '0',
-  `time_created` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+	`id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+	`name` varchar(64) NOT NULL DEFAULT '',
+	`username` varchar(64) NOT NULL DEFAULT '',
+	`is_admin` int(11) NOT NULL DEFAULT '0',
+	`is_enabled` int(11) NOT NULL DEFAULT '0',
+	`time_created` datetime DEFAULT CURRENT_TIMESTAMP,
+	CONSTRAINT username UNIQUE(username);
+	PRIMARY KEY (`id`)
 );
 
 CREATE VIEW `billing_report` AS

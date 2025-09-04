@@ -30,7 +30,8 @@
 				$this->set_do_not_bill($dnb);
 			} else {
 				// Create if does not exist				
-				$sql = "insert into directories (user_id,directory,time_created,is_enabled,do_not_bill) values (:userid,:directory,NOW(),1,:dnb)";
+				$sql = "INSERT INTO directories(user_id,directory,is_enabled,do_not_bill) ";
+				$sql .= "VALUES(:userid,:directory,1,:dnb)";
 				$args = array(':userid'=>$user_id,':directory'=>$directory,':dnb'=>$dnb);
 				$this->id = $this->db->insert_query($sql,$args);
 				$this->set_cfop($cfop,$activity_code);
@@ -158,8 +159,13 @@
 			$args = array(':id'=>$this->id);
 			$this->db->non_select_query($sql,$args);
 			
-			$sql = "insert into cfops (directory_id,cfop,activity_code,active,time_created) values (:dirid,:cfop,:activitycode,1,NOW())";
-			$args = array(':dirid'=>$this->id,':cfop'=>$cfop,':activitycode'=>$activity);
+			$sql = "INSERT INTO cfops(directory_id,cfop,activity_code,active) ";
+			$sql .= "VALUES (:dirid,:cfop,:activitycode,:active)";
+			$parameters = array(':dirid'=>$this->id,
+					':cfop'=>$cfop,
+					':activitycode'=>$activity,
+					':active'=>1		
+			);
 			$result = $this->db->insert_query($sql,$args);
 			
 			$this->cfop = $cfop;

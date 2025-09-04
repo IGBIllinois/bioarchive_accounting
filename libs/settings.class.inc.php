@@ -45,7 +45,7 @@ class settings {
 	public function set_setting($key,$value){
 		$sql = "update `settings_values` set `current`=0 where `key`=:key";
 		$this->db->non_select_query($sql,array(':key'=>$key));
-		$sql = "insert into `settings_values` (`key`,`value`,`modified`,`current`) values (:key,:value,now(),1)";
+		$sql = "insert into `settings_values` (`key`,`value`,`current`) values (:key,:value,1)";
 		$args = array(':key'=>$key,':value'=>$value);
 		$result = $this->db->non_select_query($sql,$args);
 		

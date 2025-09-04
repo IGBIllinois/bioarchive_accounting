@@ -71,9 +71,14 @@ class user {
 			}
 			else {
 				$full_name = $this->ldap->get_ldap_full_name($username);
-				$sql = "insert into users (`username`,`name`,`is_admin`,`is_enabled`,`time_created`) values (:username,:fullname,:admin,1,NOW())";
-				$args = array(':username'=>$username,':fullname'=>$full_name,':admin'=>$admin);
-				$user_id = $this->db->insert_query($sql,$args);
+				$sql = "INSERT INTO users (username,name,is_admin,is_enabled) ";
+				$sql .= "VALUES (:username,:fullname,:admin,:enabled)";
+				$parameters = array(':username'=>$username,
+						':fullname'=>$full_name,
+						':admin'=>$admin,
+						':enabled'=>1
+				);
+				$user_id = $this->db->insert_query($sql,$parameters);
 				$this->load_by_id($user_id);
 			}
 			return array('RESULT'=>true,
